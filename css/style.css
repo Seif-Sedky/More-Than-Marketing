@@ -664,7 +664,7 @@ a {
     align-items: center;
     gap: 20px;
     background-color: #FFFFFF;
-    padding: 5px 10px;
+    padding: 7.5px 10px;
     border-radius: 4px;
     width: 35vw; 
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
@@ -708,6 +708,257 @@ a {
     margin: 0 10px;
     color: #2A2A2A;
 }
+/* ===========================
+  On-Scroll Animations
+  =========================== */
+
+/* --- Logo: Shrinks in --- */
+.logo-scroll-container {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.logo-scroll-container.is-visible {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.5s;
+}
+/* --- Hero: Text Slides Up --- */
+
+/* For .portfolio-text (no initial transform) */
+.hero-text .portfolio-text {
+    opacity: 0;
+    transform: translateY(120px); /* Changed from 40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.hero-section.is-visible .hero-text .portfolio-text {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+
+/* For .hero-script (maintains its centering) */
+.hero-text .hero-script {
+    opacity: 0;
+    /* Start centered, THEN move it down 60px */
+    transform: translate(-50%, -50%) translateY(120px); /* Changed from 40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.hero-section.is-visible .hero-text .hero-script {
+    opacity: 1;
+    /* End at its final centered position */
+    transform: translate(-50%, -50%) translateY(0); 
+    transition-delay: 0.8s;
+}
+
+/* --- Hero: Button Fades In --- */
+.hero-btn {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+.hero-section.is-visible .hero-btn {
+    opacity: 1;
+    transition-delay: 0.6s;
+}
+
+/* --- About: Title Slides Down --- */
+.about-title {
+    opacity: 0;
+    transform: translateY(-80px); /* Changed from -40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.about-section.is-visible .about-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+/* --- About: Text Slides Right --- */
+.about-text {
+    opacity: 0;
+    transform: translateX(-80px); /* Changed from -40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.about-section.is-visible .about-text {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.3s;
+}
+
+/* --- About: Image Fades In --- */
+.about-image {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+.about-section.is-visible .about-image {
+    opacity: 1;
+    transition-delay: 0.5s;
+}
+
+/* --- Mission/Vision: Images Slide Up --- */
+.mv-images .mv-image {
+    opacity: 0;
+    transform: translateY(80px); /* Changed from 40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.mission-vision-section.is-visible .mv-images .mv-image:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+.mission-vision-section.is-visible .mv-images .mv-image:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+/* --- Mission/Vision: Text Slides --- */
+.mv-content .mv-item:nth-child(1) { /* Mission */
+    opacity: 0;
+    transform: translateX(-60px); /* Slides Right - Changed from -40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.mission-vision-section.is-visible .mv-content .mv-item:nth-child(1) {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.6s;
+}
+
+.mv-content .mv-item:nth-child(2) { /* Vision */
+    opacity: 0;
+    transform: translateX(80px); /* Slides Left - Changed from 40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.mission-vision-section.is-visible .mv-content .mv-item:nth-child(2) {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.6s;
+}
+
+/* --- Services: Badge Slides Down --- */
+.services-section .section-badge {
+    opacity: 0;
+    transform: translateY(-80px); /* Changed from -40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.services-section.is-visible .section-badge {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Services: Grid Items --- */
+.services-grid .service-image {
+    opacity: 0;
+    transform: translateY(100px); /* Slides Up - Changed from 40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.services-grid .service-content {
+    opacity: 0;
+    transform: translateX(-60px); /* Slides Right - Changed from -40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.services-section.is-visible .service-image,
+.services-section.is-visible .service-content {
+    opacity: 1;
+    transform: none;
+}
+
+/* --- Services: Staggering Delays --- */
+.services-section.is-visible .services-grid img:nth-of-type(1) { transition-delay: 0.1s; }
+.services-section.is-visible .services-grid .service-content:nth-of-type(1) { transition-delay: 0.2s; }
+.services-section.is-visible .services-grid img:nth-of-type(2) { transition-delay: 0.2s; }
+.services-section.is-visible .services-grid .service-content:nth-of-type(2) { transition-delay: 0.3s; }
+.services-section.is-visible .services-grid img:nth-of-type(3) { transition-delay: 0.3s; }
+.services-section.is-visible .services-grid .service-content:nth-of-type(3) { transition-delay: 0.4s; }
+.services-section.is-visible .services-grid img:nth-of-type(4) { transition-delay: 0.4s; }
+.services-section.is-visible .services-grid .service-content:nth-of-type(4) { transition-delay: 0.5s; }
+.services-section.is-visible .services-grid img:nth-of-type(5) { transition-delay: 0.5s; }
+.services-section.is-visible .services-grid .service-content:nth-of-type(5) { transition-delay: 0.6s; }
+.services-section.is-visible .services-grid img:nth-of-type(6) { transition-delay: 0.6s; }
+.services-section.is-visible .services-grid .service-content:nth-of-type(6) { transition-delay: 0.7s; }
+
+/* --- Why MTM: Badge & Images Slide Down --- */
+.why-mtm-section .section-badge,
+.why-mtm-grid .why-mtm-image {
+    opacity: 0;
+    transform: translateY(-60px); /* Changed from -40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.why-mtm-section.is-visible .section-badge {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+.why-mtm-section.is-visible .why-mtm-grid .why-mtm-image:nth-of-type(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+.why-mtm-section.is-visible .why-mtm-grid .why-mtm-image:nth-of-type(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+/* --- Why MTM: Text Slides Up --- */
+.why-mtm-text {
+    opacity: 0;
+    transform: translateY(60px); /* Changed from 40px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.why-mtm-section.is-visible .why-mtm-card:nth-of-type(1) .why-mtm-text {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+.why-mtm-section.is-visible .why-mtm-card:nth-of-type(2) .why-mtm-text {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* --- Footer: Title Fades In --- */
+.footer-title {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+.footer-section.is-visible .footer-title {
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+
+/* --- Footer: Phone Slides Up --- */
+.phone-mockup {
+    opacity: 0;
+    transform: translateY(70px); /* Changed from 50px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.footer-section.is-visible .phone-mockup {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+/* --- Footer: Contact Items Slide Right --- */
+.contact-item {
+    opacity: 0;
+    transform: translateX(-70px); /* Changed from -50px */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.footer-section.is-visible .contact-item {
+    opacity: 1;
+    transform: translateX(0);
+}
+.footer-section.is-visible .contact-item:nth-of-type(1) { transition-delay: 0.4s; }
+.footer-section.is-visible .contact-item:nth-of-type(2) { transition-delay: 0.5s; }
+.footer-section.is-visible .contact-item:nth-of-type(3) { transition-delay: 0.6s; }
+
+
+
+
+
 
 /* ===========================
    Responsive Design
