@@ -450,8 +450,6 @@ a {
     transform: translate(-50%, calc(-50% + 20px));
 }
 
-
-
 /* ===========================
   ANIMATION CSS
   =========================== */
@@ -557,6 +555,159 @@ a {
 
 
 
+
+/* ===========================
+   Why MTM Section
+   =========================== */
+.why-mtm-section {
+    max-width: 1400px;
+    margin: 150px auto 100px;
+    padding: 0 40px;
+    text-align: center;
+}
+
+/* Section Badge */
+.section-badge {
+    background-color: #FFFFFF;
+    color: #5A5A5A;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 15px 50px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 80px;
+}
+
+/* Grid Layout */
+.why-mtm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 80px;
+}
+
+.why-mtm-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.why-mtm-image {
+    width: 100%;
+    max-width: 350px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 100px;
+    margin-bottom: 40px;
+}
+
+.why-mtm-text {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #5A5A5A;
+    text-align: center;
+    max-width: 550px;
+    font-weight: 500;
+}
+
+/* ===========================
+   Footer Section
+   =========================== */
+.footer-section {
+    max-width: 1400px;
+    margin: 150px auto 0;
+    padding: 80px 40px 0; /* CHANGED - Bottom padding removed */
+    text-align: center;
+}
+
+.footer-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #5A5A5A;
+    margin-bottom: 80px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* Phone Mockup */
+.footer-phone {
+    display: flex;
+    justify-content: flex-end; /* CHANGED from center */
+    align-items: center;
+    padding-right: 20px; /* ADDED - pushes phone slightly away from the edge */
+}
+.phone-mockup {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+    position: relative; /* ADDED - for z-index and margin to work */
+    z-index: 2; /* ADDED - to ensure it's on top of the phone */
+    margin-left: -220px; /* ADDED - This pulls the block left */
+    margin-top: 28vh;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #FFFFFF;
+    padding: 5px 10px;
+    border-radius: 4px;
+    width: 35vw; 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1efe6;
+    border-radius: 8px;
+    flex-shrink: 0;
+    box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.contact-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.contact-info {
+    flex: 1;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: #2A2A2A;
+}
+
+.contact-info a {
+    color: #2A2A2A;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #6B2C2C;
+}
+
+.separator {
+    margin: 0 10px;
+    color: #2A2A2A;
+}
 
 /* ===========================
    Responsive Design
@@ -679,6 +830,21 @@ a {
         bottom: auto;
     }
 
+        .why-mtm-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+     .footer-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+     }
+    .footer-contact {
+        align-items: center;
+    }
+
+    .contact-item {
+        max-width: 600px;
+    }    
 
 }
 
@@ -747,5 +913,57 @@ a {
         font-size: 14px;
         padding: 12px 30px;
         margin-bottom: 40px;
+    }
+
+        .why-mtm-section {
+        padding: 0 20px;
+        margin: 100px auto 80px;
+    }
+
+    .section-badge {
+        font-size: 14px;
+        padding: 12px 30px;
+        margin-bottom: 40px;
+    }
+
+    .why-mtm-image {
+        height: 350px;
+        border-radius: 100px;
+    }
+
+    .why-mtm-text {
+        font-size: 18px;
+    }
+    .footer-section {
+        padding: 60px 20px 40px;
+        margin: 100px auto 0;
+    }
+
+    .footer-title {
+        font-size: 32px;
+        margin-bottom: 60px;
+    }
+
+    .phone-mockup {
+        max-width: 250px;
+    }
+
+    .contact-item {
+        padding: 12px 20px;
+        flex-direction: row;
+    }
+
+    .contact-info {
+        font-size: 16px;
+    }
+
+    .contact-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .contact-icon img {
+        width: 20px;
+        height: 20px;
     }
 }
