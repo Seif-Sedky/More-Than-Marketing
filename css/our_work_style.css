@@ -1,0 +1,232 @@
+/* ===========================
+   CSS Reset & Base Styles
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f1efe6; /* Kept same background */
+    color: #4A4A4A;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===========================
+   Navigation
+   =========================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #f1efe6;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(74, 74, 74, 0.1);
+    /* Approx height is 50px */
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+/* --- THIS IS THE SWAPPED STYLE --- */
+.nav-link {
+    font-size: 16px;
+    font-weight: 500;
+    color: #9b9b9b; 
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #1d1d1d; 
+}
+
+
+/* ===========================
+   Page Content Wrapper
+   =========================== */
+.page-content {
+    /* Pushes content below the fixed nav */
+    padding-bottom: 100px;
+    max-width: 1600px; /* Constrain the max width */
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/* ===========================
+   Project Section
+   =========================== */
+.project-section {
+    margin-bottom: 100px; /* Space between projects */
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* --- Left Column: Title --- */
+.project-title {
+    position: relative;
+    text-align: center;
+    margin-bottom: 60px;
+    margin-top: 100px; /* Add some space for items moving up */
+
+    /* Match fonts/colors from your index.html */
+}
+.project-title h1 {
+    font-size: 120px;
+    font-weight: 700;
+    color: #afaaa7; /* Gray text */
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+.project-title span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Brush Script MT', cursive;
+    font-size: 80px;
+    color: #6B2C2C; /* Red script text */
+    white-space: nowrap;
+}
+
+/* --- Left Column: Collage --- */
+.project-collage {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-rows: auto auto auto; /* Three rows for stacking */
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 60px; /* Add some space for items moving up */
+}
+.collage-item {
+    aspect-ratio: 4 / 3; /* Common photo aspect ratio */
+    border-radius: 8px; /* Add rounded corners to images */
+    overflow: hidden; /* Ensure image respects border radius */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+.collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Make images fill the container */
+}
+.collage-item.item-1 { /* Top image */
+    grid-column: 1 / span 2; /* Spans both columns */
+    grid-row: 1 / 2;
+    width: 50%; /* Make it smaller than the full width */
+    margin: 0 auto; /* Center it */
+    transform: translateY(-15%); /* adds space above from top edge */
+    z-index: 2; /* Sits on top */
+}
+.collage-item.item-2 { /* Left image */
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    transform: rotate(-10deg) translateY(-30%); /* Tilt and move up */
+    z-index: 1; /* Sits behind top */
+}
+.collage-item.item-3 { /* Right image */
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    transform: rotate(5deg) translateY(-25%); /* Tilt and move up */
+Z-index: 1; /* Sits behind top */
+}
+/* REMOVED .collage-item.item-4 rule */
+.collage-item.item-4 { /* Bottom image */
+    grid-column: 1 / span 2; /* Spans both columns */
+    grid-row: 3 / 4;
+    width: 45%; /* Make it smaller */
+    margin: 0 auto; /* Center it */
+    transform: translateY(-50%); /* Move up to overlap */
+    z-index: 2; /* Sits on top of middle row */
+}
+
+
+/* --- Right Column: Brand Assets --- */
+.project-col-right {
+    background-color: #EAE7E2; /* Fallback color */
+    background-image: url('../assets/images/cardboard-background.png'); /* Added background image */
+    background-size: cover; /* Ensure it covers the area */
+    background-position: center; /* Center the image */
+    
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    height: 100%;
+    justify-content: center;
+}
+
+/* NEW styles for the images in the right column */
+.brand-asset-image {
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain; /* Use contain to show the full image */
+}
+.brand-asset-image.stickers {
+    width: 60%; /* Make stickers a bit smaller */
+    max-width: 250px;
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+@media (max-width: 1024px) {
+    /* Logo rule removed */
+    .project-grid {
+        grid-template-columns: 1fr; /* Stack columns */
+    }
+    .project-col-right {
+        margin-top: 40px;
+    }
+    .project-title h1 {
+        font-size: 80px;
+    }
+    .project-title span {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+    .page-content {
+        padding: 100px 20px 60px; /* Adjusted top padding */
+    }
+}
