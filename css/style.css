@@ -261,9 +261,11 @@ a {
     margin-bottom: 80px;
 }
 
+
+
 /* ===========================
-   Services Section
-   =========================== */
+   Services Section
+   =========================== */
 .services-section {
     max-width: 1400px;
     margin: 120px auto 100px;
@@ -273,67 +275,52 @@ a {
 
 .services-grid {
     display: grid;
-    gap: 60px;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    gap: 40px; /* A slightly smaller gap looks better */
+    align-items: center; /* Vertically centers everything */
 }
-
-.service-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.service-card.reverse {
-    direction: rtl;
-}
-
-.service-card.reverse > * {
-    direction: ltr;
-}
-
 .service-image {
     width: 100%;
-    height: 400px;
+    aspect-ratio: 4 / 3; 
     object-fit: cover;
     border-radius: 8px;
 }
-
 .service-content {
-    text-align: left;
-    padding: 0 40px;
+    text-align: center; 
+    padding: 0 20px;
 }
-
-.service-card.reverse .service-content {
-    text-align: right;
-}
-
 .service-title {
-    font-size: 48px;
-    font-weight: 600;
+    font-size: 42px;
+    font-weight: 800;
     color: #4A4A4A;
     margin-bottom: 20px;
 }
 
 .service-description {
-    font-size: 20px;
+    font-size: 24px;
     color: #6A6A6A;
     line-height: 1.6;
+    font-weight: 600;
 }
 
+
 /* ===========================
-   Process Section
-   =========================== */
+  Process Section
+  =========================== */
 .process-section {
     max-width: 1400px;
     margin: 150px auto 100px;
     padding: 0 40px;
     text-align: center;
+    overflow: hidden; /* Added to contain animations */
 }
 
 .process-timeline {
     position: relative;
     margin-top: 80px;
-    padding: 80px 0;
+    /* Adjust padding to make room for content */
+    padding-top: 300px; 
+    padding-bottom: 300px;
 }
 
 .timeline-line {
@@ -353,74 +340,213 @@ a {
     width: 22%;
     vertical-align: top;
     z-index: 2;
-}
-
-.step-top {
-    margin-bottom: 200px;
-}
-
-.step-bottom {
-    margin-top: 200px;
+    /* Adjust margin for content spacing relative to the timeline */
+    margin: 0; 
+    text-align: center; /* Ensure title/description are centered */
+    /* We need to set a height for absolute positioning to work inside */
 }
 
 .step-number {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%; /* Position step number exactly on the timeline */
+    transform: translate(-50%, -50%); /* Center it precisely */
     font-size: 24px;
     font-weight: 600;
     color: #2A2A2A;
-    background-color: #E8E3D8;
-    padding: 0 15px;
+    background-color: #f1efe6; /* Match body background to "cut" the line */
+    padding: 0 10px; /* Give some padding for the number */
     z-index: 3;
-}
-
-.step-top .step-number {
-    bottom: -120px;
-}
-
-.step-top .step-number::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 100%);
-    width: 0;
-    height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 20px solid #2A2A2A;
-}
-
-.step-bottom .step-number {
-    top: -120px;
-}
-
-.step-bottom .step-number::before {
-    content: '';
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform: translate(-50%, -100%);
-    width: 0;
-    height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-bottom: 20px solid #2A2A2A;
+    line-height: 1; /* Adjust line height for centering */
 }
 
 .process-title {
     font-size: 42px;
-    font-weight: 600;
+    font-weight: 800;
     color: #4A4A4A;
     margin-bottom: 20px;
 }
 
 .process-description {
-    font-size: 18px;
+    font-size: 20px;
     color: #6A6A6A;
-    line-height: 1.7;
+    line-height: 1.5;
+    font-family: 600;
 }
+
+/* --- NEW Content Positioning for Top/Bottom Steps --- */
+.step-content {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.step-top .step-content {
+    bottom: 150px; /* Position text block above the timeline */
+}
+
+.step-bottom .step-content {
+    top: 150px; /* Position text block below the timeline */
+}
+
+/* --- ARROW STYLING (Pseudo-elements relative to .step-number) --- */
+/* Common arrow stem styles */
+.step-number::before,
+.step-number::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    background-color: #2A2A2A;
+    z-index: -1; /* Place behind number */
+}
+
+/* UP-POINTING ARROWS (for .step-top) */
+/* Stem for Up-pointing arrow */
+.step-top .step-number::before {
+    bottom: 100%; /* Start from bottom of .step-number, move upwards */
+    height: 70px; /* This is the stem line */
+}
+
+/* Arrowhead for Up-pointing arrow */
+.step-top .step-number::after {
+    bottom: calc(100% + 70px); /* Place at end of stem (100px up from number) */
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 20px solid #2A2A2A; /* Up-pointing arrow */
+    background: none; /* Override background-color */
+    transform: translateX(-50%) translateY(0px); /* Adjust positioning */
+}
+
+/* DOWN-POINTING ARROWS (for .step-bottom) */
+/* Stem for Down-pointing arrow */
+.step-bottom .step-number::after {
+    top: 100%; /* Start from top of .step-number, move downwards */
+    height: 70px; /* This is the stem line */
+}
+
+/* Arrowhead for Down-pointing arrow */
+.step-bottom .step-number::before {
+    top: calc(100% + 70px); /* Place at end of stem (100px down from number) */
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 20px solid #2A2A2A; /* Down-pointing arrow */
+    background: none; /* Override background-color */
+    transform: translateX(-50%) translateY(0px); /* Adjust positioning */
+}
+
+
+/* ===========================
+  ANIMATION CSS
+  =========================== */
+
+/* --- Keyframes --- */
+@keyframes animate-line {
+    from { transform: translateY(-50%) scaleX(0); }
+    to   { transform: translateY(-50%) scaleX(1); }
+}
+
+/* Stems growing (now `height` property) */
+@keyframes animate-stem-up {
+    from { height: 0; }
+    to   { height: 70px; }
+}
+@keyframes animate-stem-down {
+    from { height: 0; }
+    to   { height: 70px; }
+}
+
+/* Arrowheads fading in */
+@keyframes animate-arrowhead {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Text content fading in */
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes fade-in-down {
+    from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* --- Initial States (Before Animation) --- */
+.timeline-line {
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: left;
+}
+
+/* Up-stem */
+.step-top .step-number::before { height: 0; }
+/* Up-arrowhead */
+.step-top .step-number::after { opacity: 0; }
+
+/* Down-stem */
+.step-bottom .step-number::after { height: 0; }
+/* Down-arrowhead */
+.step-bottom .step-number::before { opacity: 0; }
+
+/* NEW Initial state for step content */
+.step-content {
+    opacity: 0;
+}
+.step-top .step-content {
+    transform: translateX(-50%) translateY(20px); /* Start lower */
+}
+.step-bottom .step-content {
+    transform: translateX(-50%) translateY(-20px); /* Start higher */
+}
+
+
+/* --- Animation Triggers --- */
+.process-section.is-visible .timeline-line {
+    animation: animate-line 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Stems */
+.process-section.is-visible .step-top .step-number::before {
+    animation: animate-stem-up 0.5s ease-out forwards;
+    animation-delay: 0.8s;
+}
+.process-section.is-visible .step-bottom .step-number::after {
+    animation: animate-stem-down 0.5s ease-out forwards;
+    animation-delay: 0.8s;
+}
+
+/* Arrowheads */
+.process-section.is-visible .step-top .step-number::after {
+    animation: animate-arrowhead 0.3s ease-in forwards;
+    animation-delay: 1.3s;
+}
+.process-section.is-visible .step-bottom .step-number::before {
+    animation: animate-arrowhead 0.3s ease-in forwards;
+    animation-delay: 1.3s;
+}
+
+/* Text Content (Staggered fade-in) */
+.process-section.is-visible .step-top .step-content {
+    animation: fade-in-up 0.5s ease-out forwards;
+}
+.process-section.is-visible .step-bottom .step-content {
+    animation: fade-in-down 0.5s ease-out forwards;
+}
+
+/* Stagger the text fade-in for a nice effect */
+.process-section.is-visible .process-step:nth-child(1) .step-content { animation-delay: 1.5s; }
+.process-section.is-visible .process-step:nth-child(2) .step-content { animation-delay: 1.7s; }
+.process-section.is-visible .process-step:nth-child(3) .step-content { animation-delay: 1.9s; }
+.process-section.is-visible .process-step:nth-child(4) .step-content { animation-delay: 2.1s; }
+
+
+
 
 /* ===========================
    Responsive Design
@@ -496,6 +622,54 @@ a {
     .step-bottom .step-number::before {
         display: none;
     }
+
+     .service-image {
+        height: 300px;
+    }
+
+    .process-timeline {
+        padding: 40px 0;
+        margin-top: 40px; /* Adjusted margin */
+    }
+
+    .process-step {
+        width: 100%;
+        margin: 60px 0 !important;
+        height: auto; /* Added */
+    }
+
+    .timeline-line {
+        display: none;
+    }
+
+    .step-number {
+        position: static;
+        transform: none;
+        display: block;
+        margin: 20px auto;
+        background-color: transparent; /* Reset background for mobile */
+    }
+
+    /* This new rule hides ALL arrow parts on mobile */
+    .step-number::before,
+    .step-number::after {
+        display: none;
+    }
+
+    /* Added: Reset content for mobile stacking */
+    .step-content {
+        position: static;
+        transform: none;
+        opacity: 1;
+        animation: none;
+    }
+    .step-top .step-content,
+    .step-bottom .step-content {
+        top: auto;
+        bottom: auto;
+    }
+
+
 }
 
 @media (max-width: 768px) {
