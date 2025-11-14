@@ -69,12 +69,18 @@ a {
     color: #1d1d1d; 
 }
 
+/* ===========================
+   Logo (Non-Fixed)
+   (This section has been removed)
+   =========================== */
+
 
 /* ===========================
    Page Content Wrapper
    =========================== */
 .page-content {
     /* Pushes content below the fixed nav */
+    padding-top: 120px; /* Reduced from 200px */
     padding-bottom: 100px;
     max-width: 1600px; /* Constrain the max width */
     margin: 0 auto;
@@ -101,8 +107,6 @@ a {
     position: relative;
     text-align: center;
     margin-bottom: 60px;
-    margin-top: 100px; /* Add some space for items moving up */
-
     /* Match fonts/colors from your index.html */
 }
 .project-title h1 {
@@ -123,7 +127,7 @@ a {
     white-space: nowrap;
 }
 
-/* --- Left Column: Collage --- */
+/* --- Left Column: Collage (NOJA) --- */
 .project-collage {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two equal columns */
@@ -131,10 +135,10 @@ a {
     gap: 15px;
     max-width: 600px;
     margin: 0 auto;
-    margin-top: 60px; /* Add some space for items moving up */
+    margin-top: 40px; /* Add some space for items moving up */
 }
 .collage-item {
-    aspect-ratio: 4 / 3; /* Common photo aspect ratio */
+    aspect-ratio: 4 / 3; /* Default for side images */
     border-radius: 8px; /* Add rounded corners to images */
     overflow: hidden; /* Ensure image respects border radius */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
@@ -147,10 +151,12 @@ a {
 .collage-item.item-1 { /* Top image */
     grid-column: 1 / span 2; /* Spans both columns */
     grid-row: 1 / 2;
-    width: 50%; /* Make it smaller than the full width */
+    width: 60%; /* Make it smaller than the full width */
     margin: 0 auto; /* Center it */
-    transform: translateY(-15%); /* adds space above from top edge */
+    transform: translateY(-20%); /* adds space above from top edge */
+
     z-index: 2; /* Sits on top */
+    aspect-ratio: 2 / 1; /* Make top and bottom wider */
 }
 .collage-item.item-2 { /* Left image */
     grid-column: 1 / 2;
@@ -162,26 +168,27 @@ a {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     transform: rotate(5deg) translateY(-25%); /* Tilt and move up */
-Z-index: 1; /* Sits behind top */
+    z-index: 1; /* Sits behind top */
 }
-/* REMOVED .collage-item.item-4 rule */
-.collage-item.item-4 { /* Bottom image */
+.collage-item.item-5 { /* Bottom image */
     grid-column: 1 / span 2; /* Spans both columns */
     grid-row: 3 / 4;
-    width: 45%; /* Make it smaller */
+    width: 60%; /* Make it smaller */
     margin: 0 auto; /* Center it */
     transform: translateY(-50%); /* Move up to overlap */
     z-index: 2; /* Sits on top of middle row */
+    aspect-ratio: 2 / 1; /* Make top and bottom wider */
 }
 
 
-/* --- Right Column: Brand Assets --- */
+/* --- Right Column: Brand Assets (NOJA) --- */
 .project-col-right {
     background-color: #EAE7E2; /* Fallback color */
     background-image: url('../assets/images/cardboard-background.png'); /* Added background image */
     background-size: cover; /* Ensure it covers the area */
     background-position: center; /* Center the image */
     
+    padding: 40px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -191,7 +198,6 @@ Z-index: 1; /* Sits behind top */
     justify-content: center;
 }
 
-/* NEW styles for the images in the right column */
 .brand-asset-image {
     width: 80%;
     max-width: 400px;
@@ -202,6 +208,149 @@ Z-index: 1; /* Sits behind top */
     width: 60%; /* Make stickers a bit smaller */
     max-width: 250px;
 }
+
+/* ===========================
+   COZETA Project Styles
+   =========================== */
+
+/* --- Left Column: Title (Cozeta) --- */
+.cozeta-script {
+    font-size: 70px; /* Slightly smaller for the different font */
+    /* Add Cozeta's brand font here if you have it */
+    /* font-family: 'Cozeta Font Name', cursive; */
+    color: #D16A47; /* Color from image */
+}
+
+/* --- Left Column: Collage (Cozeta) --- */
+.cozeta-collage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    max-width: 500px; /* Smaller collage */
+    margin: 0 auto;
+}
+.cozeta-collage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.cozeta-item-1 {
+    grid-column: 1 / span 2; /* Full width */
+    grid-row: 1 / 2;
+}
+.cozeta-item-2 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    transform: rotate(8deg) scale(0.9); /* Tilt */
+}
+.cozeta-item-3 {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    transform: rotate(-5deg) scale(0.9); /* Tilt */
+}
+
+/* --- Right Column: Brand Assets (Cozeta) --- */
+.project-col-right.cozeta-right {
+    background-image: none; /* Cozeta has no background texture */
+    background-color: transparent;
+    gap: 20px;
+    align-items: stretch; /* Make children fill height */
+    justify-content: flex-start;
+}
+.cozeta-asset-1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cozeta-asset-1 img {
+    width: 100%;
+    max-width: 400px;
+    transform: rotate(-15deg); /* Tilt the bag */
+    margin-left: -50px; /* Overlap left */
+    z-index: 2;
+    position: relative;
+    filter: drop-shadow(10px 10px 15px rgba(0,0,0,0.2));
+}
+.cozeta-asset-2 {
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    margin-top: -80px; /* Pull rack up behind bag */
+}
+.cozeta-asset-2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ===========================
+   WIDAN Project Styles
+   =========================== */
+.widan-project {
+    margin-top: 150px; /* Add extra space above */
+}
+
+/* --- Left Column: Title (Widan) --- */
+.widan-script {
+    color: #6B2C2C; /* Match NOJA's script color */
+}
+
+/* --- Left Column: Collage (Widan) --- */
+.widan-collage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    max-width: 550px;
+    margin: 0 auto;
+}
+.widan-collage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.widan-item-1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    transform: rotate(10deg);
+}
+.widan-item-2 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    transform: translateY(20%);
+}
+.widan-item-3 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    transform: translateY(-20%);
+}
+.widan-item-4 {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    transform: rotate(-8deg);
+}
+
+/* --- Right Column: Brand Assets (Widan) --- */
+.project-col-right.widan-right {
+    background-image: none;
+    background-color: transparent;
+    padding: 0; /* Remove padding */
+}
+.widan-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
 
 /* ===========================
    Responsive Design
@@ -220,6 +369,22 @@ Z-index: 1; /* Sits behind top */
     .project-title span {
         font-size: 60px;
     }
+
+    /* Cozeta stacking */
+    .cozeta-project .project-col-left {
+        order: 1; /* Show title/collage first */
+    }
+    .cozeta-project .project-col-right {
+        order: 2; /* Show assets second */
+    }
+
+    /* Widan stacking */
+    .widan-project .project-col-left {
+        order: 1; /* Show title/collage first */
+    }
+    .widan-project .project-col-right {
+        order: 2; /* Show assets second */
+    }
 }
 
 @media (max-width: 768px) {
@@ -228,5 +393,16 @@ Z-index: 1; /* Sits behind top */
     }
     .page-content {
         padding: 100px 20px 60px; /* Adjusted top padding */
+    }
+
+    /* --- Cozeta Responsive --- */
+    .cozeta-asset-1 img {
+        transform: rotate(-10deg);
+        margin-left: 0;
+        max-width: 300px;
+        margin: 0 auto; /* Center it */
+    }
+    .cozeta-script {
+        font-size: 50px;
     }
 }
