@@ -1,0 +1,321 @@
+/* ===========================
+   CSS Reset & Base Styles
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f0ebe0;
+    color: #4A4A4A;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===========================
+   Navigation
+   =========================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #eee9de;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(74, 74, 74, 0.1);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-link {
+    font-size: 16px;
+    font-weight: 500;
+    color: #9b9b9b;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #1d1d1d;
+}
+
+
+/* ===========================
+   Section Badge
+   =========================== */
+.section-badge {
+    background-color: #FFFFFF;
+    color: #5A5A5A;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 15px 50px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 80px;
+}
+
+/* ===========================
+   Services Section
+   =========================== */
+.services-section {
+    max-width: 1400px;
+    margin: 120px auto 100px;
+    padding: 0 40px;
+    text-align: center;
+}
+
+.services-grid {
+    display: grid;
+    gap: 60px;
+}
+
+.service-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.service-card.reverse {
+    direction: rtl;
+}
+
+.service-card.reverse > * {
+    direction: ltr;
+}
+
+.service-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.service-content {
+    text-align: left;
+    padding: 0 40px;
+}
+
+.service-card.reverse .service-content {
+    text-align: right;
+}
+
+.service-title {
+    font-size: 48px;
+    font-weight: 600;
+    color: #4A4A4A;
+    margin-bottom: 20px;
+}
+
+.service-description {
+    font-size: 20px;
+    color: #6A6A6A;
+    line-height: 1.6;
+}
+
+/* ===========================
+   Process Section
+   =========================== */
+.process-section {
+    max-width: 1400px;
+    margin: 150px auto 100px;
+    padding: 0 40px;
+    text-align: center;
+}
+
+.process-timeline {
+    position: relative;
+    margin-top: 80px;
+    padding: 80px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #2A2A2A;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.process-step {
+    position: relative;
+    display: inline-block;
+    width: 22%;
+    vertical-align: top;
+    z-index: 2;
+}
+
+.step-top {
+    margin-bottom: 200px;
+}
+
+.step-bottom {
+    margin-top: 200px;
+}
+
+.step-number {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: 600;
+    color: #2A2A2A;
+    background-color: #E8E3D8;
+    padding: 0 15px;
+    z-index: 3;
+}
+
+.step-top .step-number {
+    bottom: -120px;
+}
+
+.step-top .step-number::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 20px solid #2A2A2A;
+}
+
+.step-bottom .step-number {
+    top: -120px;
+}
+
+.step-bottom .step-number::before {
+    content: '';
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 20px solid #2A2A2A;
+}
+
+.process-title {
+    font-size: 42px;
+    font-weight: 600;
+    color: #4A4A4A;
+    margin-bottom: 20px;
+}
+
+.process-description {
+    font-size: 18px;
+    color: #6A6A6A;
+    line-height: 1.7;
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+@media (max-width: 1024px) {
+    .service-card {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .service-card.reverse {
+        direction: ltr;
+    }
+
+    .service-content,
+    .service-card.reverse .service-content {
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .service-image {
+        height: 300px;
+    }
+
+    .process-timeline {
+        padding: 40px 0;
+    }
+
+    .process-step {
+        width: 100%;
+        margin: 60px 0 !important;
+    }
+
+    .timeline-line {
+        display: none;
+    }
+
+    .step-number {
+        position: static;
+        transform: none;
+        display: block;
+        margin: 20px auto;
+    }
+
+    .step-top .step-number::after,
+    .step-bottom .step-number::before {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+
+    .services-section,
+    .process-section {
+        padding: 0 20px;
+    }
+
+    .service-title,
+    .process-title {
+        font-size: 32px;
+    }
+
+    .service-description,
+    .process-description {
+        font-size: 16px;
+    }
+
+    .section-badge {
+        font-size: 14px;
+        padding: 12px 30px;
+        margin-bottom: 40px;
+    }
+}
