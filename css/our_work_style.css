@@ -531,3 +531,312 @@ a {
         transform: translateX(-45%) rotate(-1deg); /* This is the final resting place */
     }
 }
+
+
+
+/* ===========================
+   FASHION UCHAF Project Styles
+   =========================== */
+.fashion-project {
+    margin-top: 150px; /* Add extra space above */
+}
+
+/* --- Left Column: TV Container --- */
+.project-col-left.fashion-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tv-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tv-frame {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2));
+}
+
+
+/* change here */
+
+/* TV Screen - Where carousel plays (narrower for portrait photos) */
+.tv-screen {
+    position: absolute;
+    /* Adjusted values for narrower, taller portrait screen */
+    top: 11%;
+    left: 25%; /* Moved left to make wider (was 30%) */
+    width: 40%; /* Wider screen (was 40%) */
+    height: 120%;
+    overflow: hidden;
+    background-color: #000;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+/* Carousel Track - Holds all images */
+.carousel-track {
+    display: flex;
+    flex-direction: column;
+    animation: carouselSlide 40s linear infinite;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 250%; /* Much taller images (was 100%) */
+    min-height: 250%; /* Ensure minimum height */
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Carousel Animation - Slides down continuously */
+@keyframes carouselSlide {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        /* Move up by 8 images (80% because we have 10 total: 8 originals + 2 duplicates) */
+        transform: translateY(-800%);
+    }
+}
+
+/* --- Right Column: Vertical Title (Fashion) --- */
+.project-col-right.fashion-right {
+    background-image: none;
+    background-color: transparent;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fashion-title {
+    transform: rotate(90deg) !important;
+    transform-origin: center center;
+    white-space: nowrap;
+    margin: 0;
+    text-align: center;
+    position: relative;
+}
+
+.fashion-title h1 {
+    color: #afaaa7; /* Gray text matching other sections */
+    font-size: 100px;
+    letter-spacing: 8px; /* Add spacing for vertical readability */
+    position: relative;
+}
+
+.fashion-title span {
+    color: #6B2C2C; /* Red script text */
+    font-size: 70px; /* Adjusted for vertical layout */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Carousel Animation - Slides down continuously */
+@keyframes carouselSlide {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        /* Move up by 8 images worth (80% of total) */
+        /* Since we have 10 images total (8 + 2 duplicates) */
+        transform: translateY(-80%);
+    }
+}
+
+/* Pause animation on hover (optional) */
+.tv-screen:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+/* ===========================
+   Responsive Design for Fashion Section
+   =========================== */
+@media (max-width: 1024px) {
+    .fashion-project .project-col-left {
+        order: 1; /* TV first */
+    }
+    .fashion-project .project-col-right {
+        order: 2; /* Title second */
+        margin-top: 40px;
+    }
+    
+    /* Keep title vertical on all screen sizes */
+    
+    .tv-container {
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .fashion-title h1 {
+        font-size: 70px;
+    }
+    
+    .fashion-title span {
+        font-size: 50px;
+    }
+    
+    .tv-container {
+        max-width: 350px;
+    }
+    
+    /* Adjust screen for smaller devices */
+    .tv-screen {
+        left: 28%;
+        width: 44%;
+    }
+}
+
+
+/* ===========================
+   SOCIAL MEDIA & STORY Project Styles
+   =========================== */
+
+/* --- Common Styles for Both Sections --- */
+.social-project,
+.story-project {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title Styles - Centered at Top */
+.social-title,
+.story-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.social-title h1,
+.story-title h1 {
+    color: #afaaa7;
+    font-size: 120px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+.social-title span,
+.story-title span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Brush Script MT', cursive;
+    color: #6B2C2C;
+    font-size: 80px;
+    white-space: nowrap;
+}
+
+/* Phones Container - Holds 2 phones side by side */
+.phones-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Social Media - Phones closer together */
+.social-phones {
+    gap: 80px;
+}
+
+/* Story - Phones more separated */
+.story-phones {
+    gap: 260px;
+}
+
+.phone-mockup {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    flex: 0 1 320px;
+}
+
+.phone-frame {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.15));
+}
+
+
+/* change here */
+/* Phone Screen - Where video plays */
+.phone-screen {
+    position: absolute;
+    /* Adjust these values to match your phone frame's screen position */
+    top: 4%;
+    left: 28.5%;
+    width: 42%;
+    height: 93%;
+    overflow: hidden;
+    background-color: #000;
+    border-radius: 30px; /* Adjust for phone screen corners */
+    z-index: 1;
+}
+
+.phone-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===========================
+   Responsive Design for Social & Story Sections
+   =========================== */
+@media (max-width: 1024px) {
+    .social-title h1,
+    .story-title h1 {
+        font-size: 90px;
+    }
+
+    .social-title span,
+    .story-title span {
+        font-size: 65px;
+    }
+
+    .social-phones,
+    .story-phones {
+        gap: 40px;
+    }
+
+    .phone-mockup {
+        max-width: 260px;
+        flex: 0 1 260px;
+    }
+}
+
+@media (max-width: 768px) {
+    .social-title h1,
+    .story-title h1 {
+        font-size: 70px;
+    }
+
+    .social-title span,
+    .story-title span {
+        font-size: 50px;
+    }
+
+    .phone-mockup {
+        max-width: 200px;
+        flex: 0 1 200px;
+    }
+
+    .social-phones,
+    .story-phones {
+        gap: 20px;
+    }
+}
