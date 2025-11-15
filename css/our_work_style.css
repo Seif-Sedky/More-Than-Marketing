@@ -472,13 +472,12 @@ a {
    so it wins against the bag's default '.cozeta-asset-1 img' style.
 */
 .cozeta-asset-1 [data-animation="slide-in-right-long"] {
-    /* Starts further left for a "long distance" slide */
     /* THIS IS THE STARTING (HIDDEN) STATE: */
-    /* We combine its final transform with the slide offset */
+    /* Set opacity to 0 and set the starting transform */
+    opacity: 0;
     transform: translateX(calc(-45% - 200px)) rotate(-1deg);
     
-    /* We make this specific animation slower */
-    transition-duration: 1.2s; 
+    /* REMOVED transition-duration, it will be controlled by 'animation' */
 }
 
 /* --- Visible State (After Animation) --- */
@@ -492,10 +491,43 @@ a {
     transform: none;
 }
 
-/* MODIFIED RULE: 
-   Also made this selector more specific to match the one above.
-   This tells the bag to animate TO its correct final transform.
-*/
+/* REPLACED this rule with the one below */
+/*
 .cozeta-asset-1 [data-animation="slide-in-right-long"].is-visible {
     transform: translateX(-45%) rotate(-1deg);
+}
+*/
+
+/* NEW RULE to trigger the keyframe animation */
+.cozeta-asset-1 [data-animation="slide-in-right-long"].is-visible {
+    /* Apply the animation when visible */
+    /* 'forwards' ensures it stays at the final (100%) state */
+    /* 'ease-out' makes it fast then slow */
+    animation: slideOvershoot 1.2s ease-out forwards;
+    
+    /* Override the generic .is-visible rules.
+       The animation will handle opacity and transform. */
+    transform: none;
+    opacity: 1;
+}
+
+/* ===========================
+   NEW: Keyframe Animations
+   =========================== */
+@keyframes slideOvershoot {
+    /* Start state (matches the hidden state) */
+    0% {
+        opacity: 0;
+        transform: translateX(calc(-45% - 200px)) rotate(-1deg);
+    }
+    /* Go slightly PAST the final destination */
+    80% {
+        opacity: 1;
+        transform: translateX(calc(-45% + 20px)) rotate(-1deg); /* This is the overshoot (20px past) */
+    }
+    /* Settle back to the final destination */
+    100% {
+        opacity: 1;
+        transform: translateX(-45%) rotate(-1deg); /* This is the final resting place */
+    }
 }
