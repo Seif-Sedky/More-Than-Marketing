@@ -438,3 +438,64 @@ a {
         font-size: 50px;
     }
 }
+
+/* ===========================
+   NEW: Scroll Animations
+   =========================== */
+
+/* --- Initial State (Before Animation) --- */
+/* All elements with 'data-animation' start transparent */
+[data-animation] {
+    opacity: 0;
+    /* Define the transition properties */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* The script will update this delay */
+    transition-delay: 0s; 
+}
+
+/* Specific starting positions for different animations */
+[data-animation="slide-down"] {
+    transform: translateY(-50px);
+}
+
+[data-animation="fade-in"] {
+    /* Fades in from a slightly lower position */
+    transform: translateY(20px);
+}
+
+[data-animation="slide-in-right"] {
+    transform: translateX(-100px);
+}
+
+/* MODIFIED RULE:
+   I made this selector more specific by adding '.cozeta-asset-1' 
+   so it wins against the bag's default '.cozeta-asset-1 img' style.
+*/
+.cozeta-asset-1 [data-animation="slide-in-right-long"] {
+    /* Starts further left for a "long distance" slide */
+    /* THIS IS THE STARTING (HIDDEN) STATE: */
+    /* We combine its final transform with the slide offset */
+    transform: translateX(calc(-45% - 200px)) rotate(-1deg);
+    
+    /* We make this specific animation slower */
+    transition-duration: 1.2s; 
+}
+
+/* --- Visible State (After Animation) --- */
+/* This class is added by JavaScript when the element is visible */
+[data-animation].is-visible {
+    opacity: 1;
+    /* CHANGED: 'transform: translate(0, 0);' to 'transform: none;'
+      This removes the animation's transform, allowing the element's
+      own CSS 'transform' (like the bag's) to apply.
+    */
+    transform: none;
+}
+
+/* MODIFIED RULE: 
+   Also made this selector more specific to match the one above.
+   This tells the bag to animate TO its correct final transform.
+*/
+.cozeta-asset-1 [data-animation="slide-in-right-long"].is-visible {
+    transform: translateX(-45%) rotate(-1deg);
+}

@@ -6,6 +6,8 @@
     <title>Our Work | More Than Marketing</title>
     <link rel="icon" type="image/png" href="assets/images/logo.png">
     
+    <!-- Make sure the path is correct, e.g., "css/our_work_style.css" or just "our_work_style.css" -->
+    <!-- Corrected path back to what you had originally -->
     <link rel="stylesheet" href="css/our_work_style.css"> 
 </head>
 <body>
@@ -35,7 +37,8 @@
                 <div class="project-col-left">
                     
                     <!-- Project Title -->
-                    <div class="project-title">
+                    <!-- Added data-animation attribute -->
+                    <div class="project-title" data-animation="slide-down">
                         <h1>Identity</h1>
                         <span>Frames</span>
                     </div>
@@ -45,16 +48,17 @@
                         
                         <!-- Images are now populated -->
 
-                        <div class="collage-item item-1">
+                        <!-- Added data-animation and data-delay attributes -->
+                        <div class="collage-item item-1" data-animation="fade-in">
                             <img src="assets/images/noja-1.png" alt="Noja Project Image 1">
                         </div>
-                        <div class="collage-item item-2">
+                        <div class="collage-item item-2" data-animation="fade-in" data-delay="200ms">
                             <img src="assets/images/noja-2.png" alt="Noja Project Image 2">
                         </div>
-                        <div class="collage-item item-3">
+                        <div class="collage-item item-3" data-animation="fade-in" data-delay="400ms">
                             <img src="assets/images/noja-3.png" alt="Noja Project Image 3">
                         </div>
-                        <div class="collage-item item-5">
+                        <div class="collage-item item-5" data-animation="fade-in" data-delay="600ms">
                             <img src="assets/images/noja-4.png" alt="Noja Project Image 4">
                         </div>
                     </div>
@@ -87,15 +91,16 @@
 
                     <!-- Project Collage -->
                     <div class="cozeta-collage">
-                        <div class="cozeta-item-1">
+                        <!-- Added data-animation attributes -->
+                        <div class="cozeta-item-1" data-animation="slide-in-right">
                             <!-- Placeholder: assets/images/cozeta-sleeve.png -->
                             <img src="assets/images/cozeta-sleeve.jpg" alt="Cozeta Sleeve Logo">
                         </div>
-                        <div class="cozeta-item-3">
+                        <div class="cozeta-item-3" data-animation="slide-in-right">
                             <!-- Placeholder: assets/images/cozeta-tags.png -->
                             <img src="assets/images/cozeta-cards.png" alt="Cozeta Tags on Hoodie">
                         </div>
-                        <div class="cozeta-item-2">
+                        <div class="cozeta-item-2" data-animation="slide-in-right">
                             <!-- Placeholder: assets/images/cozeta-coasters.png -->
                             <img src="assets/images/cozeta-neck.jpg" alt="Cozeta Coasters">
                         </div>
@@ -106,9 +111,11 @@
                 <!-- Right Column -->
                 <div class="project-col-right cozeta-right">
                     
+                    <!-- Removed data-animation attribute from wrapper div -->
                     <div class="cozeta-asset-1">
                          <!-- Placeholder: assets/images/cozeta-bag.png -->
-                        <img src="assets/images/cozeta-bag.png" alt="Cozeta Bag">
+                         <!-- Added data-animation attribute for long slide TO THE IMG -->
+                        <img src="assets/images/cozeta-bag.png" alt="Cozeta Bag" data-animation="slide-in-right-long">
                     </div>
                     <div class="cozeta-asset-2">
                          <!-- Placeholder: assets/images/cozeta-rack.png -->
@@ -137,19 +144,20 @@
                     
                     <!-- Project Collage -->
                     <div class="widan-collage">
-                        <div class="widan-item-1">
+                        <!-- Added data-animation and data-delay attributes -->
+                        <div class="widan-item-1" data-animation="fade-in">
                             <!-- Placeholder: assets/images/widan-tag.png -->
                             <img src="assets/images/widan-1.png" alt="Widan Tag">
                         </div>
-                        <div class="widan-item-2">
+                        <div class="widan-item-2" data-animation="fade-in" data-delay="200ms">
                             <!-- Placeholder: assets/images/widan-card.png -->
                             <img src="assets/images/widan-2.png" alt="Widan Card">
                         </div>
-                        <div class="widan-item-3">
+                        <div class="widan-item-3" data-animation="fade-in" data-delay="400ms">
                             <!-- Placeholder: assets/images/widan-box.png -->
                             <img src="assets/images/widan-3.png" alt="Widan Box">
                         </div>
-                        <div class="widan-item-4">
+                        <div class="widan-item-4" data-animation="fade-in" data-delay="600ms">
                             <!-- Placeholder: assets/images/widan-leather-tag.png -->
                             <img src="assets/images/widan-4.png" alt="Widan Leather Tag">
                         </div>
@@ -170,6 +178,53 @@
              =========================== -->
 
     </main>
+
+    <!-- ===========================
+         START: Animation Script
+         =========================== -->
+    <script>
+        // Wait for the document to be fully loaded before running the script
+        document.addEventListener("DOMContentLoaded", () => {
+            // Select all elements that have a 'data-animation' attribute
+            const animationElements = document.querySelectorAll('[data-animation]');
+
+            // If no elements to animate, stop the script
+            if (animationElements.length === 0) return;
+
+            // Create a new Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                // Loop over each entry (each observed element)
+                entries.forEach(entry => {
+                    // If the element is intersecting (visible)
+                    if (entry.isIntersecting) {
+                        
+                        // Get the animation delay from the 'data-delay' attribute
+                        const delay = entry.target.getAttribute('data-delay');
+                        if (delay) {
+                            // Apply the delay to the element's style
+                            entry.target.style.transitionDelay = delay;
+                        }
+                        
+                        // Add the 'is-visible' class to trigger the animation
+                        entry.target.classList.add('is-visible');
+                        
+                        // Stop observing the element so the animation only runs once
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            // Loop over all elements and start observing them
+            animationElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+    <!-- ===========================
+         END: Animation Script
+         =========================== -->
 
 </body>
 </html>
