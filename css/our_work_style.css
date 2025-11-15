@@ -100,6 +100,8 @@ a {
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
+    position: relative;
+
 }
 
 /* --- Left Column: Title --- */
@@ -223,10 +225,8 @@ a {
 
 /* --- Left Column: Collage (Cozeta) --- */
 .cozeta-collage {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
     max-width: 500px; /* Smaller collage */
     margin: 0 auto;
 }
@@ -235,22 +235,19 @@ a {
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
+    position: relative;
+    z-index: 0;
 }
-.cozeta-item-1 {
-    grid-column: 1 / span 2; /* Full width */
-    grid-row: 1 / 2;
-}
-.cozeta-item-2 {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    transform: rotate(8deg) scale(0.9); /* Tilt */
-}
+
 .cozeta-item-3 {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    transform: rotate(-5deg) scale(0.9); /* Tilt */
+    position: relative;
+    z-index: 50;  /* higher than the img elements */
+    margin-top: -80px;  /* overlap item 1 */
+    margin-bottom: -80px; /* overlap item 2 */
+    transform: rotate(-5deg) scale(1.3);
 }
+
 
 /* --- Right Column: Brand Assets (Cozeta) --- */
 .project-col-right.cozeta-right {
@@ -267,19 +264,19 @@ a {
     align-items: center;
 }
 .cozeta-asset-1 img {
-    width: 100%;
-    max-width: 400px;
-    transform: rotate(-15deg); /* Tilt the bag */
-    margin-left: -50px; /* Overlap left */
-    z-index: 2;
-    position: relative;
+    position: absolute; /* takes it out of right column flow */
+    left: 50%;          /* move to center of grid */
+    transform: translateX(-45%) rotate(-1deg); /* center & tilt */
+    top: 150px;         /* adjust vertical placement */
+    width: 42vw;       /* bag size */
+    z-index: 10;        /* above both columns */
     filter: drop-shadow(10px 10px 15px rgba(0,0,0,0.2));
 }
 .cozeta-asset-2 {
     width: 100%;
     z-index: 1;
     position: relative;
-    margin-top: -80px; /* Pull rack up behind bag */
+    margin-top: -50px; /* Pull rack up behind bag */
 }
 .cozeta-asset-2 img {
     width: 100%;
@@ -288,6 +285,33 @@ a {
     border-radius: 8px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
+.cozeta-label-top,
+.cozeta-label-bottom {
+    position: absolute;
+    z-index: 5;
+
+    width: auto;        /* don't scale width too much */
+    max-height: 250px;   /* prevents large height on big screens */
+    max-width: 450px;   /* prevents large height on big screens */
+
+    object-fit: contain;
+}
+
+/* Top label */
+.cozeta-label-top {
+    top: 10%;     /* adjusts down from the top edge of rack */
+    left: 50%;
+    transform: translateX(-50%) ;
+}
+
+/* Bottom label */
+.cozeta-label-bottom {
+    bottom: 8%;   /* adjusts up from bottom edge */
+    left: 50%;
+    transform: translateX(-50%) ;
+}
+
 
 /* ===========================
    WIDAN Project Styles
@@ -306,7 +330,7 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    gap: 20px;
+    gap: 100px;
     max-width: 550px;
     margin: 0 auto;
 }
@@ -320,23 +344,31 @@ a {
 .widan-item-1 {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
-    transform: rotate(10deg);
+    margin-left: 50px;
 }
+
 .widan-item-2 {
-    grid-column: 2 / 3;
+    grid-column: 2 / 3;  /* stay in its own column */
     grid-row: 1 / 2;
+    width: 150%;           /* slightly wider in its column */
     transform: translateY(20%);
+    margin-left: -10%;     /* optional: move slightly left */
 }
+
 .widan-item-3 {
-    grid-column: 1 / 2;
+    grid-column: 1 / 2; 
     grid-row: 2 / 3;
+    width: 150%; 
     transform: translateY(-20%);
+    margin-left: -10%;     /* optional: move slightly left */
 }
 .widan-item-4 {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    transform: rotate(-8deg);
+    margin-left: 50px;
+
 }
+
 
 /* --- Right Column: Brand Assets (Widan) --- */
 .project-col-right.widan-right {
