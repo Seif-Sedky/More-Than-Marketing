@@ -774,6 +774,7 @@ a {
     position: relative;
     z-index: 2;
     filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.15));
+    transform : scale(1.5);
 }
 
 
@@ -782,10 +783,10 @@ a {
 .phone-screen {
     position: absolute;
     /* Adjust these values to match your phone frame's screen position */
-    top: 4%;
-    left: 28.5%;
-    width: 42%;
-    height: 93%;
+    top: -18%;
+    left: 17.5%;
+    width: 64.5%;
+    height: 135%;
     overflow: hidden;
     background-color: #000;
     border-radius: 30px; /* Adjust for phone screen corners */
