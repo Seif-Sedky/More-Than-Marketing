@@ -377,7 +377,7 @@ a {
     padding: 0; /* Remove padding */
 }
 .widan-right img {
-    width: 100%;
+    width: 75%;
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
@@ -537,9 +537,7 @@ a {
 /* ===========================
    FASHION UCHAF Project Styles
    =========================== */
-.fashion-project {
-    margin-top: 150px; /* Add extra space above */
-}
+
 
 /* --- Left Column: TV Container --- */
 .project-col-left.fashion-left {
@@ -551,7 +549,7 @@ a {
 .tv-container {
     position: relative;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -561,6 +559,9 @@ a {
     position: relative;
     z-index: 2;
     filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2));
+    transform: scaleX(-1) scaleY(-1);
+    margin-left: 180px;
+    margin-top: -80px;
 }
 
 
@@ -570,10 +571,10 @@ a {
 .tv-screen {
     position: absolute;
     /* Adjusted values for narrower, taller portrait screen */
-    top: 11%;
-    left: 25%; /* Moved left to make wider (was 30%) */
-    width: 40%; /* Wider screen (was 40%) */
-    height: 120%;
+    top: 0%;
+    left: 62%; /* Moved left to make wider (was 30%) */
+    width: 27%; /* Wider screen (was 40%) */
+    height: 60%;
     overflow: hidden;
     background-color: #000;
     border-radius: 4px;
@@ -593,6 +594,7 @@ a {
     min-height: 250%; /* Ensure minimum height */
     object-fit: cover;
     flex-shrink: 0;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2)) brightness(1.5);
 }
 
 /* Carousel Animation - Slides down continuously */
@@ -613,7 +615,9 @@ a {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    margin-top: -50vh; 
+
 }
 
 .fashion-title {
@@ -667,7 +671,7 @@ a {
     }
     .fashion-project .project-col-right {
         order: 2; /* Title second */
-        margin-top: 40px;
+        margin-top: 20px;
     }
     
     /* Keep title vertical on all screen sizes */
@@ -760,7 +764,7 @@ a {
 .phone-mockup {
     position: relative;
     width: 100%;
-    max-width: 320px;
+    max-width: 620px;
     flex: 0 1 320px;
 }
 
