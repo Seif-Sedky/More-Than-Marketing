@@ -561,7 +561,7 @@ a {
    =========================== */
 .why-mtm-section {
     max-width: 1400px;
-    margin: 150px auto 100px;
+    margin: -50px auto 100px;
     padding: 0 40px;
     text-align: center;
 }
@@ -576,7 +576,7 @@ a {
     padding: 15px 50px;
     border-radius: 50px;
     display: inline-block;
-    margin-bottom: 80px;
+    margin-bottom: 30px;
 }
 
 /* Grid Layout */
@@ -956,263 +956,75 @@ a {
 .footer-section.is-visible .contact-item:nth-of-type(3) { transition-delay: 0.6s; }
 
 
+/*--------------------------------------*/
 
-
-/* ===========================
-   Responsive Design
-   =========================== */
-@media (max-width: 1024px) {
-    .hero-script {
-        font-size: 70px;
+/* =========================================
+   MOBILE RESPONSIVENESS (UPDATED)
+   Add to the very bottom of style.css
+   ========================================= */
+@media screen and (max-width: 768px) {
+    
+    /* --- 1. Global & Nav --- */
+    body { overflow-x: hidden; }
+    .page-content, .about-section, .services-section, .process-section, .why-mtm-section, .footer-section {
+        padding-left: 20px; padding-right: 20px; margin: 50px auto;
     }
+    .nav-container { justify-content: center; padding-right: 0; }
+    .nav-links { gap: 15px; padding: 0; }
+    .nav-link { font-size: 14px; }
 
-    .portfolio-text {
-        font-size: 120px;
+    /* --- 2. Hero --- */
+    .hero-section { min-height: 70vh; padding-top: 120px; }
+    .hero-text .portfolio-text { font-size: 80px; }
+    .hero-text .hero-script { font-size: 60px; width: 100%; }
+    .logo-scroll-container { left: 30%; transform: translateX(-50%); top: 50px; padding-left: 0; }
+    .logo-img-scroll { height: 70px; }
+
+    /* --- 3. Mission & Vision (SIDE-BY-SIDE FIX) --- */
+    .mission-vision-section {
+        padding: 0 15px; /* Tighten padding to fit 2 cols */
     }
-
-    .logo-img-scroll {
-    height: 80px; 
-}
-
-    .about-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
+    .mv-images {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Force 2 columns */
+        gap: 15px; /* Smaller gap */
+        margin-bottom: 20px;
     }
-
-    .about-image img {
-        height: 500px;
-    }
-
-    .mv-images,
     .mv-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Force 2 columns to match images */
+        gap: 15px;
     }
-
-    .service-card {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .service-card.reverse {
-        direction: ltr;
-    }
-
-    .service-content,
-    .service-card.reverse .service-content {
-        text-align: center;
-        padding: 0 20px;
-    }
-
-    .service-image {
-        height: 300px;
-    }
-
-    .process-timeline {
-        padding: 40px 0;
-    }
-
-    .process-step {
-        width: 100%;
-        margin: 60px 0 !important;
-    }
-
-    .timeline-line {
-        display: none;
-    }
-
-    .step-number {
-        position: static;
-        transform: none;
-        display: block;
-        margin: 20px auto;
-    }
-
-    .step-top .step-number::after,
-    .step-bottom .step-number::before {
-        display: none;
-    }
-
-     .service-image {
-        height: 300px;
-    }
-
-    .process-timeline {
-        padding: 40px 0;
-        margin-top: 40px; /* Adjusted margin */
-    }
-
-    .process-step {
-        width: 100%;
-        margin: 60px 0 !important;
-        height: auto; /* Added */
-    }
-
-    .timeline-line {
-        display: none;
-    }
-
-    .step-number {
-        position: static;
-        transform: none;
-        display: block;
-        margin: 20px auto;
-        background-color: transparent; /* Reset background for mobile */
-    }
-
-    /* This new rule hides ALL arrow parts on mobile */
-    .step-number::before,
-    .step-number::after {
-        display: none;
-    }
-
-    /* Added: Reset content for mobile stacking */
-    .step-content {
-        position: static;
-        transform: none;
-        opacity: 1;
-        animation: none;
-    }
-    .step-top .step-content,
-    .step-bottom .step-content {
-        top: auto;
-        bottom: auto;
-    }
-
-        .why-mtm-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
-     .footer-content {
-        grid-template-columns: 1fr;
-        gap: 60px;
-     }
-    .footer-contact {
-        align-items: center;
-    }
-
-    .contact-item {
-        max-width: 600px;
-    }    
-
-}
-
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 80px 20px 40px;
-    }
-
-    .hero-script {
-        font-size: 40px;
-    }
-
-    .portfolio-text {
-        font-size: 80px;
-    }
-
-    .hero-btn {
-        font-size: 14px;
-        padding: 15px 40px;
-    }
-
-    .about-title {
-        font-size: 48px;
-    }
-
-    .about-text {
-        font-size: 18px;
-    }
-
-    .about-image img {
-        height: 400px;
-    }
-
     .mv-image {
-        height: 250px;
+        height: 150px; /* Force shorter height */
     }
-
     .mv-title {
-        font-size: 36px;
+        font-size: 20px; /* Smaller title to fit */
     }
-
     .mv-text {
-        font-size: 18px;
+        font-size: 13px; /* Smaller text to fit */
+        line-height: 1.4;
     }
 
-    .nav-container {
-        padding: 0 20px;
-    }
-
-    .services-section,
-    .process-section {
-        padding: 0 20px;
-    }
-
-    .service-title,
-    .process-title {
-        font-size: 32px;
-    }
-
-    .service-description,
-    .process-description {
-        font-size: 16px;
-    }
-
-    .section-badge {
-        font-size: 14px;
-        padding: 12px 30px;
-        margin-bottom: 40px;
-    }
-
-        .why-mtm-section {
-        padding: 0 20px;
-        margin: 100px auto 80px;
-    }
-
-    .section-badge {
-        font-size: 14px;
-        padding: 12px 30px;
-        margin-bottom: 40px;
-    }
-
-    .why-mtm-image {
-        height: 350px;
-        border-radius: 100px;
-    }
-
-    .why-mtm-text {
-        font-size: 18px;
-    }
-    .footer-section {
-        padding: 60px 20px 40px;
-        margin: 100px auto 0;
-    }
-
-    .footer-title {
-        font-size: 32px;
-        margin-bottom: 60px;
-    }
-
-    .phone-mockup {
-        max-width: 250px;
-    }
-
-    .contact-item {
-        padding: 12px 20px;
-        flex-direction: row;
-    }
-
-    .contact-info {
-        font-size: 16px;
-    }
-
-    .contact-icon {
-        width: 35px;
-        height: 35px;
-    }
-
-    .contact-icon img {
-        width: 20px;
-        height: 20px;
-    }
+    /* --- 4. Other Sections --- */
+    .about-container { grid-template-columns: 1fr; margin-left: 0; }
+    .about-title { font-size: 42px; }
+    .about-image { border-radius: 50px; }
+    .services-grid { grid-template-columns: 1fr; }
+    
+    /* Process Timeline (Stacked) */
+    /* .process-timeline { padding: 0; margin-top: 40px; }
+    .timeline-line, .step-number::before, .step-number::after { display: none; }
+    .process-step { display: block; width: 100%; margin-bottom: 40px; position: static; }
+    .step-content { position: relative; transform: none !important; margin-top: 15px; }
+    .step-number { position: relative; transform: none !important; display: inline-block; background: #2A2A2A; color: #fff; border-radius: 50%; width: 40px; height: 40px; line-height: 40px; margin: 0 auto; } */
+    .step-number{ font-size: 20px;}
+    .process-description{font-size: 15px;}
+    .process-title{font-size: 25px;}
+    /* Why MTM & Footer */
+    .why-mtm-grid, .footer-content { grid-template-columns: 1fr; gap: 40px; }
+    .footer-phone { justify-content: center; padding-right: 0; }
+    .phone-mockup { max-width: 250px; }
+    .footer-contact { margin-left: 0; margin-top: 0; width: 100%; }
+    .contact-item { width: 100%; max-width: 100%; }
 }
