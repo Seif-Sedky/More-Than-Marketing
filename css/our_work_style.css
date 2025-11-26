@@ -726,8 +726,7 @@ a {
         margin-top: 0;
         gap: 5px;
     }
-    
-    /* COZETA */
+  /* COZETA */
     .cozeta-collage {
         transform: scale(0.8); /* Shrink group */
         width: 100%;
@@ -739,7 +738,6 @@ a {
         width: 90%; /* Make bag smaller */
         position: relative; 
         display: block; 
-        margin: 0 auto;
         transform: rotate(-1deg);
     }
     .cozeta-asset-2 img {
@@ -755,7 +753,6 @@ a {
         /* 1. Move it back 50% (Center it) AND 2. Scale it down */
         transform: translateX(-50%) scale(0.6) !important;  
     }
-
 /* --- WIDAN SIDE-BY-SIDE FIX (UNEVEN & CLOSER) --- */
 
     /* 1. Pull the entire section up closer to the one above */
@@ -851,9 +848,9 @@ a {
 
     /* Keep the TV screen coordinates exact */
     .tv-screen {
-        top: -25%;
-        left: 130.5%;
-        width: 27%;
+        top: -30%;
+        left: 115.5%;
+        width: 33%;
         height: 70%;
     }
 

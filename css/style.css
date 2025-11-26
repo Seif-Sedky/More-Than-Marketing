@@ -964,6 +964,12 @@ a {
    ========================================= */
 @media screen and (max-width: 768px) {
     
+    /* --- 1. Global: KILL HORIZONTAL SCROLL --- */
+    html, body {
+        width: 100%;
+        overflow-x: hidden !important; /* Forces screen to stay fixed */
+        position: relative;
+    }
     /* --- 1. Global & Nav --- */
     body { overflow-x: hidden; }
     .page-content, .about-section, .services-section, .process-section, .why-mtm-section, .footer-section {
@@ -976,11 +982,11 @@ a {
     /* --- 2. Hero --- */
     .hero-section { min-height: 70vh; padding-top: 120px; }
     .hero-text .portfolio-text { font-size: 80px; }
-    .hero-text .hero-script { font-size: 60px; width: 100%; }
+    .hero-text .hero-script { font-size: 40px; width: 100%; }
     .logo-scroll-container { left: 30%; transform: translateX(-50%); top: 50px; padding-left: 0; }
     .logo-img-scroll { height: 70px; }
 
-    /* --- 3. Mission & Vision (SIDE-BY-SIDE FIX) --- */
+    /* -- Mission & Vision (SIDE-BY-SIDE FIX) --- */
     .mission-vision-section {
         padding: 0 15px; /* Tighten padding to fit 2 cols */
     }
@@ -1013,13 +1019,8 @@ a {
     .services-grid { grid-template-columns: 1fr; }
     
     /* Process Timeline (Stacked) */
-    /* .process-timeline { padding: 0; margin-top: 40px; }
-    .timeline-line, .step-number::before, .step-number::after { display: none; }
-    .process-step { display: block; width: 100%; margin-bottom: 40px; position: static; }
-    .step-content { position: relative; transform: none !important; margin-top: 15px; }
-    .step-number { position: relative; transform: none !important; display: inline-block; background: #2A2A2A; color: #fff; border-radius: 50%; width: 40px; height: 40px; line-height: 40px; margin: 0 auto; } */
     .step-number{ font-size: 20px;}
-    .process-description{font-size: 15px;}
+    .process-description{font-size: 12px; font-weight: 600;}
     .process-title{font-size: 25px;}
     /* Why MTM & Footer */
     .why-mtm-grid, .footer-content { grid-template-columns: 1fr; gap: 40px; }
@@ -1027,4 +1028,186 @@ a {
     .phone-mockup { max-width: 250px; }
     .footer-contact { margin-left: 0; margin-top: 0; width: 100%; }
     .contact-item { width: 100%; max-width: 100%; }
+
+
+    /* ABOUT SECTION (Side-by-Side) --- */
+    .about-container {
+        display: grid;
+        /* Text gets ~55%, Image gets ~40% */
+        grid-template-columns: 1.3fr 1fr !important; 
+        gap: 15px;
+        align-items: center; 
+        margin-left: 0;
+    }
+    .about-content {
+        text-align: left;
+    }
+    .about-title {
+        font-size: 24px; 
+        margin-bottom: 10px;
+    }
+    .about-text {
+        font-size: 10px; /* Scaled down to fit side-by-side */
+        line-height: 1.4;
+    }
+    .about-text p { margin-bottom: 8px; }
+    
+    .about-image {
+        width: 100%;
+        height: auto;
+        border-radius: 20px; 
+        margin: 0;
+    }
+
+    /* --MISSION & VISION (Side-by-Side) --- */
+    .mission-vision-section { margin-top: 60px; padding: 0 10px; }
+    .mv-images {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .mv-image { height: 100px; border-radius: 8px; }
+    .mv-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+    }
+    .mv-title { font-size: 18px; margin-bottom: 5px; }
+    .mv-text { font-size: 11px; line-height: 1.3; font-weight: 500; }
+
+    /* -- SERVICES (Image /Left | Text Right) --- */
+    .services-grid {
+        display: grid;
+        /* Image fixed width | Text takes remaining space */
+        grid-template-columns: 90px 1fr !important; 
+        gap: 20px 15px; 
+        text-align: left;
+        align-items: center;
+    }
+    
+    .service-image {
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 0; 
+    }
+    
+    .service-content {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .service-title {
+        font-size: 16px; 
+        margin-bottom: 5px;
+        text-align: left;
+    }
+    .service-description {
+        font-size: 12px;
+        line-height: 1.3;
+        text-align: left;
+    }
+    /* - WHY MTM (Side-by-Side) --- */
+    .why-mtm-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr !important; /* 2 Columns */
+        gap: 10px;
+        margin-top: 40px;
+    }
+    .why-mtm-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .why-mtm-image {
+        width: 100%;
+        height: 160px; 
+        object-fit: cover;
+        border-radius: 20px;
+        margin-bottom: 15px;
+    }
+    .why-mtm-text {
+        font-size: 10px; 
+        line-height: 1.3;
+        font-weight: 500;
+        max-width: 100%;
+    }
+    /* --- 8. Footer (Match Overlapping Photo) --- */
+    
+    .footer-content { 
+        display: flex !important; 
+        flex-direction: row !important; /* Keep side-by-side */
+        align-items: center; /* Vertically center relative to each other */
+        justify-content: center;
+        gap: 0; /* Remove gap so we can control overlap manually */
+        overflow: visible; /* Allow the elements to overlap without cutting off */
+    }
+    
+    /* LEFT SIDE: The Phone */
+    .footer-phone { 
+        width: 55%; /* Take up slightly more than half the width */
+        display: flex;
+        justify-content: flex-end; /* Push phone to the right edge of this container */
+        padding: 0;
+        margin: 0;
+    }
+    
+    .phone-mockup { 
+        width: 140%; /* Make the phone look "Big" relative to the container */
+        max-width: 240px; 
+        height: auto;
+        /* Optional: Nudge phone slightly left to center the composition */
+        transform: translateX(-10px); 
+    }
+    
+    /* RIGHT SIDE: The Contact Cards */
+    .footer-contact { 
+        width: 60%; /* Take up remaining space */
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Space between cards */
+        
+        /* CRITICAL OVERLAP LOGIC */
+        margin: 0 !important;
+        margin-left: -100px !important; /* Pulls cards LEFT over the phone */
+        margin-top: 150px !important;   /* Pushes cards DOWN to bottom half */
+        
+        position: relative;
+        z-index: 10; /* Ensures cards sit ON TOP of the phone */
+    }
+    
+    .contact-item { 
+        width: 220px; /* Fixed width to ensure text fits */
+        padding: 10px 12px;
+        border-radius: 4px;
+        background: #fff;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Stronger shadow for depth */
+        
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        
+        /* Reset animations so they don't hide */
+        opacity: 1; 
+    }
+    
+    .contact-info { 
+        font-size: 12px; /* Smaller text to fit narrow cards */
+        font-weight: 800;
+        line-height: 1.3;
+        white-space: nowrap; /* Keep on one line if possible */
+    }
+    
+    /* Hide the extra separator pipe | on mobile to save space */
+    .contact-info .separator {
+        display: none;
+    }
+    /* Force phone numbers to stack if needed */
+    .contact-info a {
+        display: block;
+    }
+
 }
