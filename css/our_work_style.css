@@ -702,95 +702,266 @@ a {
     object-fit: cover;
 }
 
-
-
 /* =========================================
-   MOBILE RESPONSIVENESS (UPDATED)
-   Add to the very bottom of our_work_style.css
+   MOBILE RESPONSIVENESS (SCALING MODE)
+   Replace the previous @media block in our_work_style.css
    ========================================= */
 @media screen and (max-width: 768px) {
-    
+
     /* --- Global --- */
-    .page-content { padding-top: 80px; padding-left: 15px; padding-right: 15px; }
-    .project-grid { grid-template-columns: 1fr; gap: 40px; }
+    .page-content { padding-top: 60px; overflow-x: hidden; }
+    .project-section { margin-bottom: 60px; }
+    .project-grid { grid-template-columns: 1fr; gap: 30px; }
+    
+    /* Titles: Much Smaller */
     .project-title h1, .social-title h1, .story-title h1 { font-size: 50px; }
     .project-title span, .social-title span, .story-title span { font-size: 40px; }
 
-    /* --- Reset Collages (NOJA, Cozeta, Widan) --- */
-    .collage-item.item-1, .collage-item.item-2, .collage-item.item-3, .collage-item.item-5,
-    .cozeta-collage img, .widan-item-1, .widan-item-2, .widan-item-3, .widan-item-4 {
-        transform: none !important; margin: 0 !important; width: 100% !important;
-    }
-    .widan-collage, .cozeta-collage { display: flex; flex-direction: column; gap: 15px; }
-    /* Fix Cozeta Bag position */
-    .cozeta-asset-1 img { transform: none !important; width: 70%; position: static; margin: 0 auto; display: block; }
+    /* --- 1. COLLAGES (Scaled Down & Safe) --- */
     
-    /* --- FASHION TV FIX --- */
-    .project-col-left.fashion-left {
-        transform: scale(0.9); /* Shrink the whole TV slightly to fit screen */
-    }
-    .tv-frame {
-        margin: 0;
-        /* Keep the flip from desktop, or reset if needed. 
-           If the image looks backwards, remove this line. */
-        transform: scaleX(-1) scaleY(-1); 
-    }
-    .tv-screen {
-        /* FIX: Adjusted coordinates for mobile */
-        top: 3%; 
-        left: 63%; /* Moved slightly right */
-        width: 26%; /* Narrowed slightly */
-        height: 56%; /* Shortened slightly to fit inside frame */
-        border-radius: 2px;
-    }
-    /* Fashion Title Placement */
-    .project-col-right.fashion-right {
-        margin-top: -20px; /* Pull title closer to TV */
-        padding-top: 0;
-        height: auto;
-    }
-    .fashion-title {
-        transform: none !important; 
-        writing-mode: horizontal-tb;
+    /* NOJA */
+    .project-collage {
+        transform: scale(0.8); /* Shrink the whole group 20% */
+        width: 100%;
         margin-top: 0;
+        gap: 5px;
     }
-    .fashion-title span {
-        position: static;
+    
+    /* COZETA */
+    .cozeta-collage {
+        transform: scale(0.8); /* Shrink group */
+        width: 100%;
+        margin: 0 auto;
+    }
+    .cozeta-item-3 { margin-top: -70px; margin-bottom: -70px; } /* Reduce overlap */
+    
+    .cozeta-asset-1 img {
+        width: 90%; /* Make bag smaller */
+        position: relative; 
+        display: block; 
+        margin: 0 auto;
+        transform: rotate(-1deg);
+    }
+    .cozeta-asset-2 img {
+        margin-top: -25vh;
+        height: 500px;
+    }
+/* Fix for Cozeta Labels */
+    .cozeta-label-top, 
+    .cozeta-label-bottom {
+        /* Ensure it tries to center based on parent */
+        left: 50%; 
+        
+        /* 1. Move it back 50% (Center it) AND 2. Scale it down */
+        transform: translateX(-50%) scale(0.6) !important;  
+    }
+
+/* --- WIDAN SIDE-BY-SIDE FIX (UNEVEN & CLOSER) --- */
+
+    /* 1. Pull the entire section up closer to the one above */
+    .widan-project {
+        margin-top: -30px !important; /* Pulls it up significantly */
+        margin-bottom: 50px;
+    }
+
+    /* 2. Keep the Grid 2 Columns (Side-by-Side) */
+    .widan-project .project-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 25px;
+        align-items: center;
+    }
+
+    /* 3. The Mini Collage (Left Side) */
+    .widan-collage {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px; /* Tight gap */
+        width: 100%;
         transform: none;
-        display: block;
+    }
+
+    /* 4. Make them UNEVEN (Staggered offsets) */
+    .widan-item-1, 
+    .widan-item-2, 
+    .widan-item-3, 
+    .widan-item-4 {
+        margin: 0 !important;   /* Remove extra spacing */
+        width: 100% !important; /* Fill their tiny grid slot */
+        transform: none !important; /* Remove rotations */
+        aspect-ratio: 1/1/2/1; /* Make them squares so they look neat */
+    }
+    .widan-item-1{
+        padding-right: 15px;
+    }
+
+    .widan-item-4{
+        padding-left: 15px ;
+    }
+
+    /* 5. The Banner (Right Side) */
+    .widan-right {
+        width: 100%; 
+        padding: 0;
+    }
+    .widan-right img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+        height: 300px;
+    }
+
+   /* =========================================
+       FASHION UCHAF: SIDE-BY-SIDE FIX
+       ========================================= */
+
+    /* 1. Create the Side-by-Side Grid */
+    .project-section.fashion-project {
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+    }
+
+    .fashion-project .project-grid {
+        margin-top: 30px;
+        display: grid;
+        /* Split layout: 60% for Camera, 40% for Title */
+        grid-template-columns: 1.5fr 1fr !important; 
+        gap: 0 !important;
+        align-items: center;
+        height: 250px; /* Force a height for the vertical text to live in */
+        overflow: visible;
+    }
+
+    /* 2. Left Column: Camera */
+    .project-col-left.fashion-left {
+        width: 100%;
+        margin-left: -250px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .tv-container {
+        /* Scale down to fit the tight column */
+        transform: scale(1.3); 
+        transform-origin: left center; /* Lock it to the left side */
+        margin-top: 15vh;
+        width: 100%; 
+    }
+
+    /* Keep the TV screen coordinates exact */
+    .tv-screen {
+        top: -25%;
+        left: 130.5%;
+        width: 27%;
+        height: 70%;
+    }
+
+    /* 3. Right Column: Vertical Title */
+    .project-col-right.fashion-right {
+        width: 100%;
+        margin: 0 !important;
+        padding: 0;
+        height: 100%;
+        position: relative; /* Needed for absolute centering */
+    }
+
+    .fashion-title {
+        /* Position exactly in the center of the Right Column */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        
+        /* 1. Center it (-50%) 2. Rotate it (90deg) */
+        transform: translate(-50%, -50%) rotate(90deg) !important;
+        
+        writing-mode: horizontal-tb; /* Ensure standard mode before rotation */
+        white-space: nowrap;
         text-align: center;
     }
 
-    /* --- PHONES VIDEO FIX --- */
-    .social-phones, .story-phones { gap: 40px; }
+    .fashion-title h1 { 
+        font-size: 50px; /* Adjust size to fit height */
+        letter-spacing: 5px;
+        line-height: 1;
+        margin: 0;
+    }
+    
+    .fashion-title span { 
+        position: absolute; /* Overlay logic */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center over the H1 */
+        display: block;
+        font-size: 40px;
+    }
+    /* =========================================
+       SOCIAL & STORY FIX (Stop the Overlap)
+       ========================================= */
+    /* 1. Spacing */
+    .project-section.social-project {
+        margin-top: 80px !important; 
+    }
+    .project-section.story-project {
+        margin-top: 50px; 
+    }
+
+    /* 2. Container: FORCE ROW & NO WRAP */
+    .social-phones, .story-phones { 
+        display: flex !important;
+        flex-direction: row !important; /* Horizontal */
+        flex-wrap: nowrap !important;   /* CRITICAL: Never allow stacking */
+        justify-content: center;
+        align-items: center;
+        gap: 10px;       /* Small gap */
+        width: 100%;
+        padding: 0 5px;  /* Tiny padding so they don't touch screen edges */
+    }
+    
+    /* 3. Phone Item: OVERRIDE DESKTOP SIZE */
     .phone-mockup {
-        width: 100%;
-        max-width: 280px; /* Restrict width */
-        margin: 0 auto;
-        position: relative; /* Ensure it contains the absolute video */
-    }
-    .phone-frame {
-        transform: none; /* Remove huge scale */
-        width: 100%;
-    }
-    .phone-screen {
-        /* FIX: Reset these to fit INSIDE the image */
-        top: 2%;      /* Push down from very top edge */
-        left: 7%;     /* Push in from left edge */
-        width: 86%;   /* Width of the black screen area */
-        height: 94%;  /* Height of the black screen area */
+        /* CRITICAL FIX: Override the "320px" basis from desktop */
+        flex: 1 1 auto !important; 
         
-        border-radius: 30px; /* Match phone corners */
-        background-color: #000;
-        z-index: -1; /* Put BEHIND the frame if frame is transparent in middle */
+        /* Force them to be slightly less than half the screen */
+        width: 48% !important; 
+        max-width: 200px; /* Cap size so they don't look huge on tablets */
+        
+        /* Allow them to get as small as needed */
+        min-width: 0 !important; 
+        
+        margin: 0 !important;
+        transform: none !important;
     }
-    /* Note: If the phone frame image has a transparent middle, z-index -1 works best.
-       If the phone frame image has a solid white screen, z-index 1 is needed but 
-       you have to be perfect with top/left/width/height percentages. */
-       
+    
+    /* 4. Frame */
+    .phone-frame {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* 5. Video Alignment */
+    .phone-screen {
+        position: absolute;
+        overflow: hidden;
+        top: -18.5%;
+        left: 18%;
+        width: 62%;
+        height: 138%;
+        border-radius: 12px; /* Smaller radius for smaller view */
+        background: #000;
+        z-index: -1; 
+    }
+
     .phone-video {
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+
+    /* 6. Titles */
+    .social-title, .story-title {
+        margin-bottom: 30px;
     }
 }
