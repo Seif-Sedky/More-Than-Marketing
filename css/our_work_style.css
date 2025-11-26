@@ -726,32 +726,109 @@ a {
         margin-top: 0;
         gap: 5px;
     }
-  /* COZETA */
-    .cozeta-collage {
-        transform: scale(0.8); /* Shrink group */
+  /* =========================================
+       COZETA: SIDE-BY-SIDE (MATCHING PHOTO)
+       ========================================= */
+
+    .cozeta-project {
+        overflow: hidden; 
+        margin-bottom: 40px;
+        /* Ensure the section has height for the absolutely positioned bag */
+        padding-bottom: 20px; 
+    }
+
+    /* 1. Grid: Left side smaller, Right side bigger */
+    .cozeta-project .project-grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr !important; /* 40% / 60% split */
+        gap: 0; 
+        align-items: center;
+        position: relative;
+    }
+
+    /* --- LEFT COLUMN: THE COLLAGE --- */
+    .project-col-left {
         width: 100%;
-        margin: 0 auto;
+        display: flex;
+        justify-content: center;
     }
-    .cozeta-item-3 { margin-top: -70px; margin-bottom: -70px; } /* Reduce overlap */
+
+    .cozeta-collage {
+        width: 100%;
+        /* Scale down to fit the narrow column */
+        transform: scale(0.85); 
+        transform-origin: center; 
+        margin: 0;
+    }
     
-    .cozeta-asset-1 img {
-        width: 90%; /* Make bag smaller */
+    /* TIGHTEN THE STACK so it looks like a single strip */
+    .cozeta-item-3 { 
+        margin-top: -30px; 
+        margin-bottom: -30px; 
+    }
+
+    /* --- RIGHT COLUMN: RACK + BAG --- */
+    .project-col-right.cozeta-right {
         position: relative; 
-        display: block; 
-        transform: rotate(-1deg);
+        width: 100%;
+        display: block;
+        padding: 0;
+        
+        /* Scale the entire right composition to fit the screen */
+        transform: scale(0.7); 
+        transform-origin: center;
+        
+        /* Ensure it sits nicely in its grid slot */
+        margin-left: 20px; 
     }
+
+    /* 1. The Rack (Base) */
+    .cozeta-asset-2 {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        margin-top: 0;
+    }
+    
     .cozeta-asset-2 img {
-        margin-top: -25vh;
-        height: 500px;
+        width: 100%;
+        height: auto;
     }
-/* Fix for Cozeta Labels */
+
+    /* 2. The Bag (Floating Bottom Right) */
+    .cozeta-asset-1 {
+        display: block !important; /* Ensure it's visible */
+        position: relative;
+        z-index: 10; /* CRITICAL: This puts it ON TOP of the Rack */
+        width: 100%;
+    }
+
+    .cozeta-asset-1 img {
+         display: block !important;
+    position: absolute; /* Changed back to absolute */
+    z-index: 10;
+    width: 100%; /* Adjust size */
+    
+    /* Position it */
+    top: -20%; /* Distance from bottom - adjust this */
+    left: -15%; /* Distance from left - adjust this */
+    }
+
+    /* 3. The Labels (On the Rack) */
     .cozeta-label-top, 
     .cozeta-label-bottom {
-        /* Ensure it tries to center based on parent */
         left: 50%; 
-        
-        /* 1. Move it back 50% (Center it) AND 2. Scale it down */
-        transform: translateX(-50%) scale(0.6) !important;  
+        /* Center and scale labels to fit the rack image */
+        transform: translateX(-50%) scale(0.35) !important;  
+        z-index: 5;
+    }
+
+    .cozeta-label-bottom{
+        margin-bottom:40px ;
+    }
+
+     .cozeta-label-top{
+        margin-top:40px ;
     }
 /* --- WIDAN SIDE-BY-SIDE FIX (UNEVEN & CLOSER) --- */
 
