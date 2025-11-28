@@ -751,6 +751,8 @@ a {
         width: 100%;
         display: flex;
         justify-content: center;
+        margin-top: -50px;
+
     }
 
     .cozeta-collage {
@@ -759,6 +761,7 @@ a {
         transform: scale(0.85); 
         transform-origin: center; 
         margin: 0;
+
     }
     
     /* TIGHTEN THE STACK so it looks like a single strip */
@@ -775,7 +778,7 @@ a {
         padding: 0;
         
         /* Scale the entire right composition to fit the screen */
-        transform: scale(0.7); 
+        transform: scale(0.75); 
         transform-origin: center;
         
         /* Ensure it sits nicely in its grid slot */
@@ -787,12 +790,20 @@ a {
         position: relative;
         z-index: 1;
         width: 100%;
-        margin-top: 0;
+        margin-top: -50px;
     }
     
     .cozeta-asset-2 img {
         width: 100%;
-        height: auto;
+        
+        /* 1. Force the height you want */
+        height: 350px; /* Adjust this number to make it taller/shorter */
+        
+        /* 2. CRITICAL: Prevents the image from looking squished */
+        object-fit: cover; 
+        
+        /* 3. Ensure the center of the rack stays visible */
+        object-position: center center;
     }
 
     /* 2. The Bag (Floating Bottom Right) */
@@ -801,17 +812,18 @@ a {
         position: relative;
         z-index: 10; /* CRITICAL: This puts it ON TOP of the Rack */
         width: 100%;
+        
     }
 
     .cozeta-asset-1 img {
-         display: block !important;
+    display: block !important;
     position: absolute; /* Changed back to absolute */
     z-index: 10;
-    width: 100%; /* Adjust size */
-    
+    width: 140%;      /* Increase this number to scale up (e.g., 150%) */
+    max-width: none;  /* CRITICAL: overrides the global limit */    
     /* Position it */
-    top: -20%; /* Distance from bottom - adjust this */
-    left: -15%; /* Distance from left - adjust this */
+    top: 20%; /* Distance from bottom - adjust this */
+    left: -18%; /* Distance from left - adjust this */
     }
 
     /* 3. The Labels (On the Rack) */
@@ -819,16 +831,16 @@ a {
     .cozeta-label-bottom {
         left: 50%; 
         /* Center and scale labels to fit the rack image */
-        transform: translateX(-50%) scale(0.35) !important;  
-        z-index: 5;
+        transform: translateX(-50%) scale(0.75, 0.5) !important;
+         z-index: 5;
     }
 
     .cozeta-label-bottom{
-        margin-bottom:40px ;
+        margin-bottom:120px ;
     }
 
      .cozeta-label-top{
-        margin-top:40px ;
+        margin-top:110px ;
     }
 /* --- WIDAN SIDE-BY-SIDE FIX (UNEVEN & CLOSER) --- */
 

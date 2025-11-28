@@ -1110,6 +1110,38 @@ a {
         line-height: 1.3;
         text-align: left;
     }
+
+/* -- SERVICES RE-ORDERING FIX --- */
+    
+    /* 1. Marketing (Correct in HTML) */
+    .services-grid img:nth-of-type(1) { order: 1; }
+    .services-grid div:nth-of-type(1) { order: 2; }
+
+    /* 2. Branding (Swap Needed) */
+    /* The HTML has "Branding" text as #2, but "Branding" image is #3 */
+    .services-grid img:nth-of-type(3) { order: 3; } /* Branding Image */
+    .services-grid div:nth-of-type(2) { order: 4; } /* Branding Text */
+
+    /* 3. Content Creation (Swap Needed) */
+    /* The HTML has "Content" text as #3, but "Content" image is #2 */
+    .services-grid img:nth-of-type(2) { order: 5; } /* Content Image */
+    .services-grid div:nth-of-type(3) { order: 6; } /* Content Text */
+
+    /* 4. Financial Plans (Swap Needed) */
+    /* Text is #4, but Image is #6 */
+    .services-grid img:nth-of-type(6) { order: 7; } /* Financial Image */
+    .services-grid div:nth-of-type(4) { order: 8; } /* Financial Text */
+
+    /* 5. Photoshoots (Swap Needed) */
+    /* Text is #5, but Image is #4 */
+    .services-grid img:nth-of-type(4) { order: 9; }  /* Photoshoot Image */
+    .services-grid div:nth-of-type(5) { order: 10; } /* Photoshoot Text */
+
+    /* 6. Models (Swap Needed) */
+    /* Text is #6, but Image is #5 */
+    .services-grid img:nth-of-type(5) { order: 11; } /* Models Image */
+    .services-grid div:nth-of-type(6) { order: 12; } /* Models Text */
+
     /* - WHY MTM (Side-by-Side) --- */
     .why-mtm-grid {
         display: grid;
