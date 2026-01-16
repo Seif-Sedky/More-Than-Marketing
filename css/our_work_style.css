@@ -902,92 +902,92 @@ a {
         border-radius: 4px;
         height: 300px;
     }
+/* =========================================
+   FASHION UCHAF: MOBILE SIDE-BY-SIDE FIX
+   ========================================= */
+/* =========================================
+   FASHION UCHAF: MOBILE ALIGNMENT FIX
+   ========================================= */
 
-   /* =========================================
-       FASHION UCHAF: SIDE-BY-SIDE FIX
-       ========================================= */
+/* 1. Reset the Grid to allow Side-by-Side */
+.fashion-project .project-grid {
+    display: grid !important;
+    /* 65% for TV, 35% for labels */
+    grid-template-columns: 1.3fr 0.7fr !important; 
+    gap: 0 !important;
+    align-items: center;
+    height: auto !important;
+    margin-top: 40px;
+}
 
-    /* 1. Create the Side-by-Side Grid */
-    .project-section.fashion-project {
-        margin-top: 50px !important;
-        margin-bottom: 50px !important;
-    }
+/* 2. The TV Container (The Anchor) */
+.project-col-left.fashion-left {
+    margin: 0 !important;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* Keeps it on the left */
+}
 
-    .fashion-project .project-grid {
-        margin-top: 30px;
-        display: grid;
-        /* Split layout: 60% for Camera, 40% for Title */
-        grid-template-columns: 1.5fr 1fr !important; 
-        gap: 0 !important;
-        align-items: center;
-        height: 250px; /* Force a height for the vertical text to live in */
-        overflow: visible;
-    }
+.tv-container {
+    position: relative;
+    width: 100%;
+    /* Remove desktop offsets and scaling */
+    transform: none !important; 
+    margin: 0 !important;
+}
 
-    /* 2. Left Column: Camera */
-    .project-col-left.fashion-left {
-        width: 100%;
-        margin-left: -250px;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        height: 100%;
-    }
+/* 3. The Frame (The Base Layer) */
+.tv-frame {
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 2; /* Sits on top of the images */
+    /* Maintain your original design choice */
+    transform: scaleX(-1) scaleY(-1) !important; 
+}
 
-    .tv-container {
-        /* Scale down to fit the tight column */
-        transform: scale(1.3); 
-        transform-origin: left center; /* Lock it to the left side */
-        margin-top: 15vh;
-        width: 100%; 
-    }
+/* 4. The Screen (The Clipping Window) */
+.tv-screen {
+    position: absolute !important;
+    /* These % must be exact to fit the "hole" in your frame asset */
+    top: 20%;    /* Distance from top of container */
+    left: 35%;   /* Distance from left of container */
+    width: 30%;  /* Width of the visible screen area */
+    height: 60%; /* Height of the visible screen area */
+    z-index: 1;  /* Sits behind the frame */
+    overflow: hidden; 
+}
 
-    /* Keep the TV screen coordinates exact */
-    .tv-screen {
-        top: -30%;
-        left: 115.5%;
-        width: 33%;
-        height: 70%;
-    }
+/* 5. The Images (Code-based resizing) */
+.carousel-image {
+    width: 100% !important;
+    height: 100% !important; /* Forces image to fit the container height */
+    object-fit: cover !important; /* Crops the image to fit without stretching */
+    display: block;
+}
 
-    /* 3. Right Column: Vertical Title */
-    .project-col-right.fashion-right {
-        width: 100%;
-        margin: 0 !important;
-        padding: 0;
-        height: 100%;
-        position: relative; /* Needed for absolute centering */
-    }
+/* 6. The Vertical Label (The Right Side) */
+.project-col-right.fashion-right {
+    margin: 0 !important;
+    padding-left: 10px;
+    height: auto !important;
+}
 
-    .fashion-title {
-        /* Position exactly in the center of the Right Column */
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        
-        /* 1. Center it (-50%) 2. Rotate it (90deg) */
-        transform: translate(-50%, -50%) rotate(90deg) !important;
-        
-        writing-mode: horizontal-tb; /* Ensure standard mode before rotation */
-        white-space: nowrap;
-        text-align: center;
-    }
+.fashion-title {
+    transform: rotate(90deg) !important;
+    white-space: nowrap;
+    position: relative !important;
+}
 
-    .fashion-title h1 { 
-        font-size: 50px; /* Adjust size to fit height */
-        letter-spacing: 5px;
-        line-height: 1;
-        margin: 0;
-    }
-    
-    .fashion-title span { 
-        position: absolute; /* Overlay logic */
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%); /* Center over the H1 */
-        display: block;
-        font-size: 40px;
-    }
+.fashion-title h1 {
+    font-size: 35px !important;
+    letter-spacing: 2px;
+}
+
+.fashion-title span {
+    font-size: 28px !important;
+}
+
     /* =========================================
        SOCIAL & STORY FIX (Stop the Overlap)
        ========================================= */
