@@ -931,11 +931,15 @@ a {
 .tv-container {
     position: relative;
     width: 100%;
-    /* Remove desktop offsets and scaling */
-    transform: none !important; 
+    
+    /* CHANGE THIS LINE: Scale 1.2 = 20% larger. Adjust as needed (e.g., 1.15 or 1.3) */
+    transform: scale(1.25) !important; 
+    
+    /* ADD THIS LINE: Anchors the scaling to the left so it grows towards the right */
+    transform-origin: left center;
+    
     margin: 0 !important;
 }
-
 /* 3. The Frame (The Base Layer) */
 .tv-frame {
     margin: 0 !important;
