@@ -707,9 +707,16 @@ a {
    Replace the previous @media block in our_work_style.css
    ========================================= */
 @media screen and (max-width: 768px) {
-
     /* --- Global --- */
-    .page-content { padding-top: 60px; overflow-x: hidden; }
+    .page-content {
+        /* Increase global padding to clear the navbar */
+        padding-top: 100px !important;
+    }
+    /* Specific fix for the first section (NOJA) */
+    .project-section:first-of-type .project-col-left {
+        margin-top: 0 !important; /* Reset the negative margin causing it to slide up */
+        padding-top: 20px;        /* Add a little breathing room */
+    }
     .project-section { margin-bottom: 60px; }
     .project-grid { grid-template-columns: 1fr; gap: 30px; }
     
@@ -721,7 +728,7 @@ a {
     
     /* NOJA */
     .project-collage {
-        transform: scale(0.8); /* Shrink the whole group 20% */
+        transform: scale(1.1); /* Shrink the whole group 20% */
         width: 100%;
         margin-top: 0;
         gap: 5px;
